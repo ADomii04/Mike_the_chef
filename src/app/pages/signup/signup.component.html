@@ -1,0 +1,26 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <label>Név</label>
+    <input type="text" formControlName="name" />
+    <div *ngIf="signupForm.get('name')?.touched && signupForm.get('name')?.invalid">
+      A név kötelező.
+    </div>
+  
+    <label>Email</label>
+    <input type="email" formControlName="email" />
+    <div *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.invalid">
+      Érvénytelen email.
+    </div>
+  
+    <label>Jelszó</label>
+    <input type="password" formControlName="password" />
+  
+    <label>Jelszó megerősítése</label>
+    <input type="password" formControlName="confirmPassword" />
+  
+    <div *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.invalid">
+      A jelszó kötelező.
+    </div>
+  
+    <button type="submit">Regisztráció</button>
+  </form>
+  

@@ -1,0 +1,82 @@
+
+<main>
+    <body>
+        <div class="top-div">
+            <div class="title-container">
+                <h1 class="logo">Mike the chef</h1>
+            </div>
+            <div class="btn-container">
+                <button mat-button class="btn" (click)="goToLogin()" appBold>Login</button>
+                <button mat-button class="btn" (click)="goToSignup()" appBold>Sign up</button>
+            </div>
+        </div>
+        <mat-toolbar color="primary" class="navbar">
+            <span class="navbar-item" (click)="goToRecipes()">Recipes</span>
+            <span class="navbar-item" (click)="goToVideos()">Videos</span>
+        </mat-toolbar>
+        <div class="about">
+            <div class="text"> 
+                <div class="middle-text">
+                    <h1 class="title">New Videos <br> 
+                        Every Week
+                    </h1>
+                    <p class="description">Join Mike on Youtube every week <br>  in the kitchen</p>
+                    <a href="https://www.youtube.com/@Lifebymikeg"><button class="watch-btn">Watch now </button></a>
+                </div>
+            </div>
+            <div class="img">
+                <img src="images/Mik.webp" alt="">
+            </div>
+        </div>
+        <div class="new-recipe">
+            <div class="recipe-img">
+                <img src={{recipes[0].imageUrl}} alt="">
+            </div>
+            <div class="recipe">
+                <div class="recipe-texts">
+                    <p class="recipe-text">New Recipe</p>
+                    <h1 class="recipe-title">{{recipes[0].title}}</h1>
+                    <p class="recipe-description">{{recipes[0].description}}</p>
+                    <button class="recipe-btn">Read Full Recipe</button>
+                </div>
+            </div>
+        </div>
+        <div class="topics">
+            <h1 class="topics-text">Discover by topic</h1>
+            <button class="topics-btn" (click)="setFilter('junk')" appHighlight>Junk</button>
+            <button class="topics-btn" (click)="setFilter('noodles')" appHighlight>Noodles</button>
+            <button class="topics-btn" (click)="setFilter('soups')" appHighlight>Soups</button>
+            <button class="topics-btn" (click)="setFilter('airfryer')" appHighlight>Airfryer</button>
+            <button class="topics-btn" (click)="setFilter('quick meals')" appHighlight>Quick meals</button>
+            <button class="topics-btn" (click)="setFilter('pizza')" appHighlight>Pizza</button>
+            <button class="topics-btn" (click)="setFilter('desserts')" appHighlight>Desserts</button>
+            <button class="topics-btn" (click)="setFilter('snacks')" appHighlight>Snacks</button>
+        </div>
+        <div class="listing">
+            <div class="top">
+              <div *ngFor="let recipe of filteredRecipes.slice(0, 6)" class="recipe-container">
+                
+                <mat-card (click)="goToSingleRecipe(recipe.id)" class="recipe-card">
+                  <img mat-card-image [src]="recipe.imageUrl" alt="{{recipe.title}}" class="recipe-container-img" />
+                  <mat-card-header>
+                    <mat-card-title class="recipe-text">{{ recipe.title }}</mat-card-title>
+                  </mat-card-header>
+                </mat-card>
+                
+              </div>
+            </div>
+          </div>
+          
+        <div class="media">
+            <div class="socials">
+                <p class="numbers"><span>4.6M</span> Youtube subscribers </p>
+                <p class="numbers"><span>630K</span> Instagram followers </p>
+                <p class="numbers"><span>450K</span> Tiktok subscribers </p>
+            </div>
+            <div class="introduce">
+                <p>Hey everyone! I'm Mike, a chef and passionate food lover. I started this channel because I truly believe that cooking is more than just preparing meals 
+                    — it's about sharing joy, creating memories, and connecting with others. Here, I share simple yet special recipes that anyone can enjoy making. Join me on this journey and let's discover together how amazing cooking can be!</p>
+            </div>
+        </div>
+    </body>
+</main>

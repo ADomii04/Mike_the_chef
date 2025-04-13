@@ -1,0 +1,17 @@
+<div *ngIf="recipe" class="recipe">
+    <div class="recipe-container">
+        <h1 class="recipe-title">{{ recipe.title }}</h1>
+        <img [src]="recipe.imageUrl" alt="{{ recipe.title }}" class="recipe-img" />
+    </div>
+    <div class="recipe-container">
+        <h1 class="recipe-title">Ingredients:</h1>
+        <ul>
+            <li *ngFor="let ing of recipe.ingredients" class="recipe-ingridients">{{ ing }}</li>
+        </ul>
+    </div>
+</div>
+<div class="steps">
+    <h1>
+        Ide jönnek majd a lépések....
+    </h1>
+</div>
