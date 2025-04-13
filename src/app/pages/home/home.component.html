@@ -54,7 +54,7 @@
         </div>
         <div class="listing">
             <div class="top">
-              <div *ngFor="let recipe of filteredRecipes.slice(0, 6)" class="recipe-container">
+              <div  *ngFor="let recipe of recipesType | categoryFilter:selectedType" class="recipe-container">
                 
                 <mat-card (click)="goToSingleRecipe(recipe.id)" class="recipe-card">
                   <img mat-card-image [src]="recipe.imageUrl" alt="{{recipe.title}}" class="recipe-container-img" />

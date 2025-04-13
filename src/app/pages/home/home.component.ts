@@ -7,11 +7,12 @@ import { BoldDirective } from '../../../directs/bold.directive';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { CategoryFilterPipe } from '../../pipes/text-transform.pipe';
 
 @Component({
   selector: 'app-home',
   imports: [NgFor, HighlightDirective, BoldDirective, MatToolbarModule, 
-      MatButtonModule, MatCardModule],
+      MatButtonModule, MatCardModule, CategoryFilterPipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -41,16 +42,12 @@ export class HomeComponent implements OnInit{
 
   recipesType = RECIPES;
 
-  selectedType: string | null = null;
+  selectedType: string = '';
   
   ngOnInit():void{
     this.recipes = RECIPES;
   }
 
-  get filteredRecipes() {
-    if (!this.selectedType) return this.recipesType;
-    return this.recipesType.filter(recipe => recipe.type === this.selectedType);
-  }
 
   setFilter(type: string) {
     this.selectedType = type;

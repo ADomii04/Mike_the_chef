@@ -6,6 +6,21 @@ export interface Recipe {
     ingredients: string[];
     type : string;
 }
+export interface User{
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+}
+export interface Video{
+  id: string;
+  title: string;
+  url: string;
+}
+export interface Comment{
+  user: User;
+  text: string;
+}
   
   // Dummy data
   export const RECIPES: Recipe[] = [
@@ -160,8 +175,7 @@ export interface Recipe {
       title: 'Bacon-wrapped stuffed chicken breast with steamed green beans',
       description: "If you're craving a truly awesome stuffed chicken breast with a filling that takes it to the next level, and it's wrapped in bacon, then this air fryer recipe will be your go-to! To keep it diet-friendly, the side dish is steamed lemon green beans.",
       imageUrl: 'images/baconbe-tekert-toltott-csirke.jpg',
-      ingredients: ['80 g diced bacon', '120 g cream cheese', '120 g mozzarella', '40 g spring onion', '1 clove garlic', 'Salt, pepper', '2 tsp thyme', '2 tsp marjoram',
-        '700 g chicken breast (4 pieces)', '12 - 14 slices of bacon','20 g butter','300 g green beans','1 lemon (juice)'],
+      ingredients: ['80 g diced bacon', '120 g cream cheese', '120 g mozzarella', '40 g spring onion', '1 clove garlic', 'Salt, pepper', '2 tsp thyme', '2 tsp marjoram','700 g chicken breast (4 pieces)', '12 - 14 slices of bacon','20 g butter','300 g green beans','1 lemon (juice)'],
       type: "airfryer",
     },
   ];
