@@ -1,6 +1,7 @@
 <main>
+  <main>
   <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
-    <h1>Sign up</h1>
+    <h1>Profile</h1>
 
     <mat-form-field appearance="fill">
       <mat-label>Név</mat-label>
@@ -17,6 +18,8 @@
       <input matInput [(ngModel)]="user.password" name="password" type="password" required />
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit">Regisztráció</button>
+    <button mat-raised-button color="primary" type="submit" (click)="onSave()">Save</button>
+    <button mat-raised-button color="primary" class="delete" (click)="onDelete()" type="submit">Delete</button>
   </form>
+</main>
 </main>

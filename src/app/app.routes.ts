@@ -5,6 +5,8 @@ import { VideosComponent } from './pages/videos/videos.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { RecipeDetailComponent } from './pages/recipe-detail/recipe-detail.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { AuthGuard } from '../../auth.guard';
 
 export const routes: Routes = [
     {path:"", component: HomeComponent},
@@ -12,5 +14,6 @@ export const routes: Routes = [
     {path:"videos", component: VideosComponent},
     {path:"login", component: LoginComponent},
     {path:"signup", component: SignupComponent},
-    {path:"recipes/:id", component: RecipeDetailComponent}
+    {path:"recipes/:id", component: RecipeDetailComponent, canActivate:[AuthGuard]},
+    {path:"profile", component:ProfileComponent, canActivate:[AuthGuard]}
 ];

@@ -5,37 +5,33 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../../services/authservices.service';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  imports: [NgIf, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSnackBarModule]
+  imports: [NgIf, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, FormsModule]
 })
 export class LoginComponent {
-  loginForm: FormGroup;
+  email = '';
+  password = '';
 
-  constructor(private fb: FormBuilder, private snackBar: MatSnackBar) {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+  constructor(private authService: AuthService, private router:Router) {}
+
+  onLogin() {
+    this.authService.login(this.email, this.password).subscribe({
+      next: (res) => {
+        console.log('Sikeres bejelentkezés:', res);
+       this.router.navigate(['/'])
+      },
+      error: (err) => {
+        console.error('Bejelentkezési hiba:', err);
+      }
     });
   }
-
-  onSubmit() {
-    if (this.loginForm.valid) {
-      const { email, password } = this.loginForm.value;
-      console.log('Login attempt:', email, password);
-      this.snackBar.open('Sikeres bejelentkezés!', 'Bezár', {
-        duration: 3000, 
-        horizontalPosition: 'center',
-        verticalPosition: 'bottom'
-      });
-      
-    } else {
-      this.loginForm.markAllAsTouched();
-    }
-  }
+  
 }
 

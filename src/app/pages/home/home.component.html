@@ -6,9 +6,13 @@
                 <h1 class="logo">Mike the chef</h1>
             </div>
             <div class="btn-container">
-                <button mat-button class="btn" (click)="goToLogin()" appBold>Login</button>
-                <button mat-button class="btn" (click)="goToSignup()" appBold>Sign up</button>
+                <button mat-button class="btn" (click)="goToLogin()" appBold *ngIf="!isLoggedIn()">Login</button>
+                <button mat-button class="btn" (click)="goToSignup()" appBold *ngIf="!isLoggedIn()">Sign up</button>
+                <button mat-button class="btn" (click)="goToProfile()" appBold *ngIf="isLoggedIn()">Profile</button>
             </div>
+            <ng-template #loggedIn>
+                <button mat-button class="btn" (click)="goToProfile()">Profile</button>
+            </ng-template>
         </div>
         <mat-toolbar color="primary" class="navbar">
             <span class="navbar-item" (click)="goToRecipes()">Recipes</span>
